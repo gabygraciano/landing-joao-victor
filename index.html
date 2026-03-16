@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-clip">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="João Victor - Psicólogo Clínico. A psicoterapia é um espaço de escuta e reflexão.">
+    <title>João Victor - Psicólogo Clínico</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Poppins & Georgia (Georgia is web-safe, loaded naturally by browsers, but we map it in tailwind for consistency) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#212B46',   /* Dark Blue from headings */
+                        secondary: '#62688E', /* Muted Purple/Blue from boxes */
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        georgia: ['Georgia', 'serif'],
+                    },
+                    borderRadius: {
+                        'hero': '45px',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        fadeInUp: 'fadeInUp 0.8s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Background with Overlay for Hero Section */
+        .hero-bg {
+            background-color: #212B46;
+            background-image: linear-gradient(to right, rgba(33, 43, 70, 0.85) 0%, rgba(33, 43, 70, 0.4) 100%), url('assets/images/IMG1.png');
+            background-size: cover;
+            background-position: 75% center;
+            background-repeat: no-repeat;
+        }
+
+        /* Mobile-only: Adjust background scaling */
+        @media (max-width: 767px) {
+            .hero-bg {
+                background-color: #212B46;
+                background-image: linear-gradient(to bottom, rgba(33, 43, 70, 0) 0%, rgba(33, 43, 70, 0.4) 45%, rgba(33, 43, 70, 0.9) 75%, rgba(33, 43, 70, 1) 95%), url('assets/images/IMG1.png');
+                background-size: 160% auto;
+                background-position: right top;
+                background-repeat: no-repeat;
+            }
+
+            .hero-content {
+                min-height: 480px;
+                padding-top: 240px;
+                padding-bottom: 2rem;
+            }
+        }
+
+        /* Staggered animation delays for the list items */
+        .stagger-1 {
+            animation-delay: 100ms;
+        }
+
+        .stagger-2 {
+            animation-delay: 250ms;
+        }
+
+        .stagger-3 {
+            animation-delay: 400ms;
+        }
+
+        .stagger-4 {
+            animation-delay: 550ms;
+        }
+
+        .stagger-5 {
+            animation-delay: 700ms;
+        }
+
+        /* Timeline vertical line */
+        .timeline-container {
+            position: relative;
+        }
+
+        /* The dot on the timeline - sticky to follow scroll */
+        .timeline-dot {
+            position: sticky;
+            top: 50vh;
+            width: 24px;
+            height: 24px;
+            background-color: #282A59;
+            border-radius: 50%;
+            z-index: 10;
+            margin-left: -12px;
+            left: 50%;
+        }
+
+        /* Scroll-triggered animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+
+        .reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+
+        .reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        .quote-banner {
+            background-image: linear-gradient(to bottom, rgba(38, 45, 74, 0.3) 0%, rgba(38, 45, 74, 0.6) 100%), url('assets/images/IMG2.png');
+        }
+
+        @media (min-width: 768px) {
+            .quote-banner {
+                background-image: linear-gradient(to right, rgba(38, 45, 74, 0.1) 0%, rgba(38, 45, 74, 0.3) 40%, rgba(38, 45, 74, 0.95) 100%), url('assets/images/IMG2.png');
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gray-50 text-gray-800 antialiased font-georgia selection:bg-primary selection:text-white overflow-x-clip">
+
+    <!-- Hero Section -->
+    <header class="hero-bg text-white rounded-b-hero overflow-hidden relative shadow-lg">
+        <!-- Navbar -->
+        <nav
+            class="container mx-auto px-6 py-8 flex justify-between items-center font-poppins relative z-10 w-full max-w-7xl">
+            <div class="flex items-center">
+                <!-- Logotipo do canto superior esquerdo -->
+                <img src="assets/images/logotipo.png" alt="Logotipo João Victor"
+                    class="h-10 md:h-14 w-auto object-contain">
+            </div>
+
+            <div class="hidden md:flex gap-8 lg:gap-10 text-sm lg:text-base font-semibold tracking-wider">
+                <a href="#" class="hover:text-gray-300 transition-colors uppercase">Home</a>
+                <a href="#como-funciona" class="hover:text-gray-300 transition-colors uppercase">Como Funciona</a>
+                <a href="#sobre-mim" class="hover:text-gray-300 transition-colors uppercase">Sobre Mim</a>
+                <a href="#duvidas" class="hover:text-gray-300 transition-colors uppercase">Dúvidas</a>
+            </div>
+
+            <!-- Mobile Menu Button (Hamburger style) -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-50 relative"
+                aria-label="Abrir Menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-40 flex justify-end transition-transform duration-300 transform translate-x-full md:hidden">
+            <!-- Overlay -->
+            <div id="mobile-menu-overlay"
+                class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
+
+            <!-- Drawer Content -->
+            <div class="relative w-72 h-full bg-[#282A59] shadow-2xl flex flex-col pt-24 px-8 gap-6">
+                <a href="#"
+                    class="mobile-nav-link text-white text-xl font-poppins font-semibold uppercase tracking-wider hover:text-gray-300 transition-colors">Home</a>
+                <a href="#como-funciona"
+                    class="mobile-nav-link text-white text-xl font-poppins font-semibold uppercase tracking-wider hover:text-gray-300 transition-colors">Como
+                    Funciona</a>
+                <a href="#sobre-mim"
+                    class="mobile-nav-link text-white text-xl font-poppins font-semibold uppercase tracking-wider hover:text-gray-300 transition-colors">Sobre
+                    Mim</a>
+                <a href="#duvidas"
+                    class="mobile-nav-link text-white text-xl font-poppins font-semibold uppercase tracking-wider hover:text-gray-300 transition-colors">Dúvidas</a>
+            </div>
+        </div>
+
+        <!-- Mobile Hero uses background-image -->
+
+        <!-- Hero Content -->
+        <div
+            class="container mx-auto px-6 py-32 lg:py-40 relative z-10 max-w-7xl flex flex-col md:flex-row justify-end md:justify-between items-start md:items-end text-left hero-content">
+            <div class="max-w-xl reveal">
+                <h1 class="text-2xl md:text-5xl lg:text-5xl leading-tight mb-4 md:mb-8 font-georgia">
+                    Entre o que você sente e o <br class="hidden md:block">
+                    que consegue explicar, a <br class="hidden md:block">
+                    <span class="italic font-bold">terapia pode ajudar.</span>
+                </h1>
+                <a href="https://wa.me/558199400404" target="_blank" rel="noopener noreferrer"
+                    class="inline-block bg-white text-primary font-bold font-georgia py-2.5 px-6 md:py-3.5 md:px-8 rounded-[10px] hover:bg-gray-100 hover:scale-105 transition-all shadow-xl text-base md:text-lg mt-4">
+                    Marcar uma conversa
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção: Quando a terapia pode ajudar -->
+    <section id="como-funciona" class="container mx-auto px-6 py-24 md:py-32 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+
+            <!-- Esquerda: Título e Resumo -->
+            <div class="md:w-5/12 pt-16 md:pt-32 flex flex-col justify-start text-center md:text-left">
+                <h2 class="text-4xl md:text-5xl text-primary font-georgia mb-2 leading-[1.1]">
+                    Quando a terapia <br>
+                    <span class="font-bold text-5xl md:text-5xl lg:text-[4rem]">pode ajudar</span>
+                </h2>
+                <p
+                    class="text-gray-600 font-poppins text-xl md:text-2xl leading-relaxed mt-4 md:mt-6 w-full max-w-sm mx-auto md:mx-0">
+                    A psicoterapia é um espaço de escuta e reflexão sobre a
+                    <span class="italic text-primary font-bold">sua história, emoções e desafios.</span>
+                </p>
+            </div>
+
+            <!-- Direita: Timeline/Lista com Animação -->
+            <div class="md:w-7/12 w-full flex">
+                <div class="timeline-container w-10 flex-shrink-0 relative hidden sm:block">
+                    <!-- The Line (single) -->
+                    <div class="absolute left-1/2 -ml-[1px] top-0 bottom-0 w-[2px] bg-gray-300"></div>
+                    <!-- The Dot (sticky - follows scroll) -->
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="flex flex-col gap-4 font-poppins text-base md:text-xl w-full">
+                    <div
+                        class="bg-[#62688E] text-white py-6 px-8 md:px-10 shadow-sm opacity-0 animate-fadeInUp stagger-1 rounded-md hover:scale-[1.02] hover:-translate-y-0.5 hover:bg-[#3a3d6b] hover:shadow-lg transition-all duration-300 cursor-default">
+                        Ansiedade, medo ou angústia constante
+                    </div>
+                    <div
+                        class="bg-[#62688E] text-white py-6 px-8 md:px-10 shadow-sm opacity-0 animate-fadeInUp stagger-2 rounded-md hover:scale-[1.02] hover:-translate-y-0.5 hover:bg-[#3a3d6b] hover:shadow-lg transition-all duration-300 cursor-default">
+                        Conflitos em relacionamentos
+                    </div>
+                    <div
+                        class="bg-[#62688E] text-white py-6 px-8 md:px-10 shadow-sm opacity-0 animate-fadeInUp stagger-3 rounded-md hover:scale-[1.02] hover:-translate-y-0.5 hover:bg-[#3a3d6b] hover:shadow-lg transition-all duration-300 cursor-default">
+                        Questões de identidade e pertencimento na comunidade <strong>LGBTQIAPN+</strong>
+                    </div>
+                    <div
+                        class="bg-[#62688E] text-white py-6 px-8 md:px-10 shadow-sm opacity-0 animate-fadeInUp stagger-4 rounded-md hover:scale-[1.02] hover:-translate-y-0.5 hover:bg-[#3a3d6b] hover:shadow-lg transition-all duration-300 cursor-default">
+                        Dificuldades no trabalho ou carreira
+                    </div>
+                    <div
+                        class="bg-[#62688E] text-white py-6 px-8 md:px-10 shadow-sm opacity-0 animate-fadeInUp stagger-5 rounded-md hover:scale-[1.02] hover:-translate-y-0.5 hover:bg-[#3a3d6b] hover:shadow-lg transition-all duration-300 cursor-default">
+                        Momentos de transição ou decisões importantes na vida
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Seção: Banner da Citação (IMG2 Background) -->
+    <section class="mt-10 relative shadow-md mx-auto min-h-[400px] md:h-[904px] quote-banner"
+        style="max-width: 1920px; background-size: cover; background-position: center; border-radius: 45px 45px 0 0;">
+        <div class="container mx-auto px-6 max-w-7xl h-full flex items-center justify-end">
+            <!-- Right: Quote C.S. Lewis -->
+            <div
+                class="max-w-md lg:max-w-xl text-center md:text-right px-4 md:pr-10 pt-40 md:pt-20 reveal reveal-delay-1">
+                <p
+                    class="font-poppins text-lg md:text-2xl lg:text-3xl italic leading-relaxed mb-4 text-white font-light drop-shadow-md">
+                    “Você não pode voltar atrás e mudar o começo, mas pode <strong class="font-bold">começar de onde
+                        está</strong> e mudar o final.”
+                </p>
+                <p class="font-poppins text-lg md:text-2xl font-bold text-white drop-shadow-md">C.S. Lewis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Como funciona o atendimento -->
+    <section id="como-funciona"
+        class="text-white w-full mx-auto flex items-center shadow-lg py-16 md:py-0 min-h-[600px] md:h-[643px]"
+        style="max-width: 1920px; background-color: #282A59; margin-top: -1px;">
+        <div class="container mx-auto px-6 max-w-7xl w-full">
+            <!-- Content Grid: Header & Cards -->
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-12 items-center lg:items-center">
+
+                <!-- Left Header & Button -->
+                <div class="lg:w-5/12 flex flex-col justify-center items-start">
+                    <h2 class="text-3xl md:text-5xl lg:text-5xl font-georgia mb-6 leading-[1.1]">
+                        Como funciona <br>
+                        <span class="font-bold text-4xl md:text-5xl lg:text-[4.0rem]">o atendimento</span>
+                    </h2>
+                    <p class="text-gray-300 font-poppins text-lg md:text-xl leading-relaxed max-w-md mb-8">
+                        Atendimento online para todo o Brasil e exterior com <strong
+                            class="text-white font-bold">horários flexíveis</strong>
+                    </p>
+                    <a href="https://wa.me/558199400404" target="_blank" rel="noopener noreferrer"
+                        class="inline-block bg-white text-primary font-bold font-georgia py-3.5 px-8 rounded-[10px] hover:bg-gray-100 hover:scale-105 transition-all shadow-xl text-lg">
+                        Dê o primeiro passo!
+                    </a>
+                </div>
+
+                <!-- Right: 3 Cards -->
+                <div
+                    class="lg:w-7/12 flex flex-col md:flex-row gap-5 font-poppins text-[#262D4A] items-stretch md:items-end">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-[#E6E8F4] rounded-lg p-6 shadow-xl flex-1 relative group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                        <h3 class="font-bold text-base md:text-[17px] mb-3 leading-snug">Primeiro contato<br>pelo
+                            WhatsApp</h3>
+                        <p class="text-[14px] leading-relaxed opacity-[0.85] font-medium flex-grow">Envie uma mensagem
+                            para tirar
+                            dúvidas ou falar brevemente sobre o que está buscando.</p>
+                    </div>
+
+                    <!-- Card 2 (Offset up slightly in design) -->
+                    <div
+                        class="bg-[#E6E8F4] rounded-lg p-6 shadow-xl flex-1 relative group hover:-translate-y-2 transition-transform duration-300 md:mb-6 flex flex-col">
+                        <h3 class="font-bold text-base md:text-[17px] mb-3 leading-snug">Conversa inicial<br>(anamnese)
+                        </h3>
+                        <p class="text-[14px] leading-relaxed opacity-[0.85] font-medium flex-grow">Marcamos um primeiro
+                            momento
+                            de conversa para entender sua demanda e explicar como funciona o processo terapêutico.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-[#E6E8F4] rounded-lg p-6 shadow-xl flex-1 relative group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                        <h3 class="font-bold text-base md:text-[17px] mb-3 leading-snug">Início do<br>acompanhamento
+                        </h3>
+                        <p class="text-[14px] leading-relaxed opacity-[0.85] font-medium flex-grow">As sessões acontecem
+                            online,
+                            em horários combinados de acordo com sua disponibilidade.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Quem sou eu? -->
+    <section id="sobre-mim" class="container mx-auto px-6 pt-24 md:pt-32 pb-8 md:pb-12" style="max-width: 1400px;">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-center lg:items-stretch">
+
+            <!-- Left Image -->
+            <div class="w-full lg:w-auto flex justify-center lg:justify-end shrink-0 reveal-left">
+                <img src="assets/images/IMG3.png" alt="Retrato de João Victor" class="object-cover shadow-2xl"
+                    style="width: 100%; max-width: 661px; height: auto; border-radius: 25px;">
+            </div>
+
+            <!-- Right Text -->
+            <div class="w-full lg:flex-1 flex flex-col justify-center reveal-right">
+                <h2 class="text-4xl lg:text-5xl text-primary font-bold font-georgia mb-8">Quem sou eu?</h2>
+                <div class="text-gray-600 font-poppins text-[16px] md:text-lg space-y-6 leading-relaxed max-w-2xl">
+                    <p>
+                        Sou <strong class="font-semibold text-primary">psicólogo clínico</strong>, pós-graduado em <em
+                            class="font-bold text-primary">Psicanálise</em>, com atuação no <strong
+                            class="font-semibold text-primary">atendimento online</strong> de adolescentes e adultos em
+                        todo o Brasil. Minha prática é guiada pelo rigor ético, pela escuta atenta e por um compromisso
+                        sério com o cuidado psicológico.
+                    </p>
+                    <p>
+                        Meu trabalho busca oferecer um <strong class="font-semibold text-primary">espaço de escuta sem
+                            julgamentos</strong>, onde cada pessoa possa compreender melhor sua história, seus conflitos
+                        e seus desejos.
+                    </p>
+                    <p>
+                        Tenho experiência clínica em orientação e reorientação profissional, conflitos emocionais e
+                        relacionamentos, além do acolhimento da comunidade LGBTQIAPN+. Também atuei em <strong
+                            class="font-semibold text-primary">plantões psicológicos</strong> voltados à <strong
+                            class="font-semibold text-primary italic">saúde masculina</strong> e como voluntário na ONG
+                        ARCO, com foco na promoção de direitos e práticas de cuidado humanizado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Call to Action Final -->
+    <section class="w-full relative overflow-hidden mt-4 md:mt-8 mb-16">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col lg:flex-row items-stretch pt-8 md:pt-16">
+
+                <!-- Left Text -->
+                <div class="lg:w-[50%] flex items-center lg:pr-12 pb-12 lg:pb-0 z-10">
+                    <h2 class="text-3xl md:text-[3.1rem] text-primary font-georgia leading-[1.1]">
+                        Se você sente que <br class="hidden md:block">
+                        precisa falar, estou disponível <br class="hidden md:block">
+                        <strong class="font-bold text-[#282A59]">para escutar.</strong>
+                    </h2>
+                </div>
+
+                <!-- Right Dark Box (Colado com a borda) -->
+                <div class="lg:w-[48%] lg:ml-auto relative flex items-center justify-center py-16 md:py-20 z-10">
+                    <!-- Fundo Roxo Mágico (Estica infinitamente para a direita e faz a curva do lado esquerdo) -->
+                    <div
+                        class="absolute inset-y-0 left-0 w-[200vw] bg-[#282A59] rounded-l-[25px] md:rounded-l-[35px] -z-10 shadow-2xl">
+                    </div>
+
+                    <div class="w-full px-8 md:px-12 text-center">
+                        <p
+                            class="text-white font-poppins text-xl md:text-[1.62rem] font-light mb-10 leading-relaxed text-center">
+                            Em terapia, passado, presente e futuro se encontram — e <br class="hidden md:block">
+                            compreender essa trajetória pode <strong class="font-bold">abrir caminhos</strong> <br
+                                class="hidden md:block">
+                            para novas escolhas.
+                        </p>
+                        <div class="w-full flex justify-center">
+                            <a href="https://wa.me/558199400404" target="_blank" rel="noopener noreferrer"
+                                class="inline-block bg-white text-[#282A59] font-bold font-georgia py-4 px-12 rounded-[10px] hover:bg-gray-100 transition-all shadow-md text-xl">
+                                Conversar pelo WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Seção: FAQ + Instagram Carousel -->
+    <section id="duvidas" class="w-full py-20 md:py-28" style="background-color: #D6D9EA;">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-20">
+
+                <!-- Left: FAQ -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl md:text-5xl font-georgia text-primary mb-10 leading-tight">
+                        Perguntas <strong class="font-bold">frequentes</strong>
+                    </h2>
+
+                    <!-- FAQ Items -->
+                    <div class="space-y-4" id="faq-container">
+                        <!-- FAQ 1 -->
+                        <div class="faq-item bg-white rounded-xl shadow-sm overflow-hidden">
+                            <button onclick="toggleFaq(this)"
+                                class="w-full flex items-center justify-between px-6 py-5 text-left font-poppins text-[15px] md:text-base font-medium text-primary hover:bg-gray-50 transition-colors">
+                                <span>Qual é a abordagem terapêutica?</span>
+                                <span
+                                    class="faq-icon text-2xl text-primary font-bold ml-4 shrink-0 transition-transform duration-300">+</span>
+                            </button>
+                            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                <p
+                                    class="px-6 pb-5 text-gray-600 font-poppins text-[14px] md:text-[15px] leading-relaxed">
+                                    O atendimento é baseado na psicanálise, com foco na escuta atenta e na compreensão
+                                    mais profunda da história, dos sentimentos e dos conflitos de cada pessoa.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-item bg-white rounded-xl shadow-sm overflow-hidden">
+                            <button onclick="toggleFaq(this)"
+                                class="w-full flex items-center justify-between px-6 py-5 text-left font-poppins text-[15px] md:text-base font-medium text-primary hover:bg-gray-50 transition-colors">
+                                <span>O atendimento é online ou presencial?</span>
+                                <span
+                                    class="faq-icon text-2xl text-primary font-bold ml-4 shrink-0 transition-transform duration-300">+</span>
+                            </button>
+                            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                <p
+                                    class="px-6 pb-5 text-gray-600 font-poppins text-[14px] md:text-[15px] leading-relaxed">
+                                    O atendimento é realizado de forma online, permitindo que pessoas de qualquer lugar
+                                    do Brasil ou do exterior participem das sessões com conforto, privacidade e
+                                    segurança.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="faq-item bg-white rounded-xl shadow-sm overflow-hidden">
+                            <button onclick="toggleFaq(this)"
+                                class="w-full flex items-center justify-between px-6 py-5 text-left font-poppins text-[15px] md:text-base font-medium text-primary hover:bg-gray-50 transition-colors">
+                                <span>Quais são os horários disponíveis?</span>
+                                <span
+                                    class="faq-icon text-2xl text-primary font-bold ml-4 shrink-0 transition-transform duration-300">+</span>
+                            </button>
+                            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                <p
+                                    class="px-6 pb-5 text-gray-600 font-poppins text-[14px] md:text-[15px] leading-relaxed">
+                                    Os horários são flexíveis e combinados diretamente no momento do agendamento, de
+                                    acordo com a disponibilidade.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="faq-item bg-white rounded-xl shadow-sm overflow-hidden">
+                            <button onclick="toggleFaq(this)"
+                                class="w-full flex items-center justify-between px-6 py-5 text-left font-poppins text-[15px] md:text-base font-medium text-primary hover:bg-gray-50 transition-colors">
+                                <span>Você atende crianças e adolescentes?</span>
+                                <span
+                                    class="faq-icon text-2xl text-primary font-bold ml-4 shrink-0 transition-transform duration-300">+</span>
+                            </button>
+                            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                                <p
+                                    class="px-6 pb-5 text-gray-600 font-poppins text-[14px] md:text-[15px] leading-relaxed">
+                                    Sim. O atendimento é realizado para crianças, adolescentes e adultos. Cada
+                                    acompanhamento é conduzido de acordo com as necessidades e características de cada
+                                    fase da vida.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ainda tem dúvidas? -->
+                    <div class="mt-10 text-center">
+                        <h3 class="text-2xl md:text-2xl font-georgia font-bold text-primary mb-4">Ainda tem dúvidas?
+                        </h3>
+                        <a href="https://wa.me/558199400404" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center bg-[#282A59] text-white font-bold font-georgia rounded-[10px] hover:bg-[#1e2048] transition-all shadow-lg text-[15px] w-full max-w-[240px] md:max-w-[250px] h-[50px] mx-auto">
+                            Fale comigo no WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Saiba mais + Instagram Carousel -->
+                <div class="lg:w-1/2 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-14">
+                    <!-- Saiba mais text -->
+                    <h2 class="font-georgia font-bold shrink-0 flex flex-col justify-center text-center md:text-left"
+                        style="color: rgba(40, 42, 89, 0.35); font-size: clamp(40px, 8vw, 80px); font-style: normal; line-height: 1.2;">
+                        Saiba<br class="hidden md:block"> mais!
+                    </h2>
+
+                    <!-- Carousel Container -->
+                    <div class="relative w-[326px] md:w-full md:max-w-sm mx-auto flex-shrink-0">
+                        <!-- Slides -->
+                        <div class="carousel-slides relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl w-full"
+                            style="min-height: 500px;">
+                            <div class="carousel-slide active-slide">
+                                <blockquote class="instagram-media"
+                                    data-instgrm-permalink="https://www.instagram.com/p/CjTz_3jrqJV/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                    data-instgrm-version="14"
+                                    style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:calc(100% - 2px);">
+                                    <div style="padding:16px;"> <a
+                                            href="https://www.instagram.com/p/CjTz_3jrqJV/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                            style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                                            target="_blank">
+                                            <div style=" display: flex; flex-direction: row; align-items: center;">
+                                                <div
+                                                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                                                </div>
+                                                <div
+                                                    style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                                                    </div>
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="padding: 19% 0;"></div>
+                                            <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                                <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1"
+                                                    xmlns="https://www.w3.org/2000/svg"
+                                                    xmlns:xlink="https://www.w3.org/1999/xlink">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-511.000000, -20.000000)"
+                                                            fill="#000000">
+                                                            <g>
+                                                                <path
+                                                                    d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                                                                </path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div style="padding-top: 8px;">
+                                                <div
+                                                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                                                    Ver essa foto no Instagram</div>
+                                            </div>
+                                            <div style="padding: 12.5% 0;"></div>
+                                            <div
+                                                style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                                                <div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                                                    </div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                                                    </div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                                                    </div>
+                                                </div>
+                                                <div style="margin-left: 8px;">
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                                                    </div>
+                                                    <div
+                                                        style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                                                    </div>
+                                                </div>
+                                                <div style="margin-left: auto;">
+                                                    <div
+                                                        style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                                                    </div>
+                                                    <div
+                                                        style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                                                    </div>
+                                                    <div
+                                                        style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                                                <div
+                                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
+                                                </div>
+                                                <div
+                                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <p
+                                            style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                                            <a href="https://www.instagram.com/p/CjTz_3jrqJV/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                                                target="_blank">Um post compartilhado por João Victor | Psicólogo Recife
+                                                (@joaov_psi)</a>
+                                        </p>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <div class="carousel-slide" style="display:none;">
+                                <blockquote class="instagram-media"
+                                    data-instgrm-permalink="https://www.instagram.com/p/Cink4k1r4S_/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                    data-instgrm-version="14"
+                                    style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:calc(100% - 2px);">
+                                    <div style="padding:16px;"> <a
+                                            href="https://www.instagram.com/p/Cink4k1r4S_/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                            style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                                            target="_blank">
+                                            <div style=" display: flex; flex-direction: row; align-items: center;">
+                                                <div
+                                                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                                                </div>
+                                                <div
+                                                    style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                                                    </div>
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="padding: 19% 0;"></div>
+                                            <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                                <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1"
+                                                    xmlns="https://www.w3.org/2000/svg"
+                                                    xmlns:xlink="https://www.w3.org/1999/xlink">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-511.000000, -20.000000)"
+                                                            fill="#000000">
+                                                            <g>
+                                                                <path
+                                                                    d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                                                                </path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div style="padding-top: 8px;">
+                                                <div
+                                                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                                                    Ver essa foto no Instagram</div>
+                                            </div>
+                                            <div style="padding: 12.5% 0;"></div>
+                                            <div
+                                                style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                                                <div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                                                    </div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                                                    </div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                                                    </div>
+                                                </div>
+                                                <div style="margin-left: 8px;">
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                                                    </div>
+                                                    <div
+                                                        style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                                                    </div>
+                                                </div>
+                                                <div style="margin-left: auto;">
+                                                    <div
+                                                        style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                                                    </div>
+                                                    <div
+                                                        style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                                                    </div>
+                                                    <div
+                                                        style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                                                <div
+                                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
+                                                </div>
+                                                <div
+                                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <p
+                                            style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                                            <a href="https://www.instagram.com/p/Cink4k1r4S_/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                                                target="_blank">Um post compartilhado por João Victor | Psicólogo Recife
+                                                (@joaov_psi)</a>
+                                        </p>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <div class="carousel-slide" style="display:none;">
+                                <blockquote class="instagram-media"
+                                    data-instgrm-permalink="https://www.instagram.com/p/ChLP1rCOSRM/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                    data-instgrm-version="14"
+                                    style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:calc(100% - 2px);">
+                                    <div style="padding:16px;"> <a
+                                            href="https://www.instagram.com/p/ChLP1rCOSRM/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                            style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                                            target="_blank">
+                                            <div style=" display: flex; flex-direction: row; align-items: center;">
+                                                <div
+                                                    style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                                                </div>
+                                                <div
+                                                    style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                                                    </div>
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="padding: 19% 0;"></div>
+                                            <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                                <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1"
+                                                    xmlns="https://www.w3.org/2000/svg"
+                                                    xmlns:xlink="https://www.w3.org/1999/xlink">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-511.000000, -20.000000)"
+                                                            fill="#000000">
+                                                            <g>
+                                                                <path
+                                                                    d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                                                                </path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div style="padding-top: 8px;">
+                                                <div
+                                                    style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                                                    Ver essa foto no Instagram</div>
+                                            </div>
+                                            <div style="padding: 12.5% 0;"></div>
+                                            <div
+                                                style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                                                <div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
+                                                    </div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;">
+                                                    </div>
+                                                    <div
+                                                        style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);">
+                                                    </div>
+                                                </div>
+                                                <div style="margin-left: 8px;">
+                                                    <div
+                                                        style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;">
+                                                    </div>
+                                                    <div
+                                                        style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)">
+                                                    </div>
+                                                </div>
+                                                <div style="margin-left: auto;">
+                                                    <div
+                                                        style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);">
+                                                    </div>
+                                                    <div
+                                                        style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);">
+                                                    </div>
+                                                    <div
+                                                        style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                                                <div
+                                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;">
+                                                </div>
+                                                <div
+                                                    style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;">
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <p
+                                            style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                                            <a href="https://www.instagram.com/p/ChLP1rCOSRM/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                                                target="_blank">Um post compartilhado por João Victor | Psicólogo Recife
+                                                (@joaov_psi)</a>
+                                        </p>
+                                    </div>
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button onclick="changeSlide(-1)"
+                            class="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 text-white hover:text-gray-200 transition-colors drop-shadow-md bg-black/20 md:bg-transparent rounded-full p-0.5 md:p-0"
+                            aria-label="Anterior">
+                            <svg class="w-8 h-8 md:w-12 md:h-12" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                            </svg>
+                        </button>
+                        <button onclick="changeSlide(1)"
+                            class="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 text-white hover:text-gray-200 transition-colors drop-shadow-md bg-black/20 md:bg-transparent rounded-full p-0.5 md:p-0"
+                            aria-label="Próximo">
+                            <svg class="w-8 h-8 md:w-12 md:h-12" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                            </svg>
+                        </button>
+
+                        <!-- Dots -->
+                        <div class="flex justify-center gap-3 mt-6">
+                            <button onclick="goToSlide(0)"
+                                class="carousel-dot w-2 h-2 rounded-full bg-[#282A59] transition-all"></button>
+                            <button onclick="goToSlide(1)"
+                                class="carousel-dot w-2 h-2 rounded-full bg-gray-400 transition-all"></button>
+                            <button onclick="goToSlide(2)"
+                                class="carousel-dot w-2 h-2 rounded-full bg-gray-400 transition-all"></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contato -->
+    <div style="background-color: #D6D9EA;">
+        <footer class="w-full py-8 md:py-6" style="border-radius: 45px 45px 0 0; background: #282A59;">
+            <div
+                class="container mx-auto px-6 max-w-7xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-4">
+                <div class="flex flex-col items-start gap-4">
+                    <!-- Title -->
+                    <h2 class="text-white font-poppins font-bold text-lg tracking-widest uppercase">Contato</h2>
+
+                    <!-- Icons Row -->
+                    <div class="flex items-center gap-6">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/558199400404" target="_blank" rel="noopener noreferrer"
+                            aria-label="WhatsApp" class="text-white hover:text-gray-300 transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/joaov_psi/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram" class="text-white hover:text-gray-300 transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:psi.joaov@gmail.com" aria-label="E-mail"
+                            class="text-white hover:text-gray-300 transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <p
+                    class="text-white font-poppins text-sm md:text-base tracking-wide flex items-center flex-wrap gap-1 md:self-end">
+                    © JOÃO VICTOR | CRP: 02/25727 | <strong class="font-bold">PSICÓLOGO CLÍNICO</strong>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Instagram Embed Script -->
+    <script async defer src="//www.instagram.com/embed.js"></script>
+
+    <!-- JavaScript: FAQ Accordion + Carousel -->
+    <script>
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const icon = item.querySelector('.faq-icon');
+            const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
+            // Close all others
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.querySelector('.faq-answer').style.maxHeight = '0px';
+                faq.querySelector('.faq-icon').textContent = '+';
+                faq.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+            });
+
+            // Toggle clicked
+            if (!isOpen) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.textContent = '−';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Instagram Carousel
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            slides.forEach((slide, i) => {
+                slide.style.display = i === currentSlide ? 'block' : 'none';
+            });
+
+            dots.forEach((dot, i) => {
+                dot.className = i === currentSlide
+                    ? 'carousel-dot w-3 h-3 rounded-full bg-[#282A59] transition-all'
+                    : 'carousel-dot w-3 h-3 rounded-full bg-gray-400 transition-all';
+            });
+
+            // Re-process Instagram embeds for newly visible slide
+            if (window.instgrm && window.instgrm.Embeds) {
+                window.instgrm.Embeds.process();
+            }
+        }
+
+        // Smooth scrolling for navbar links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        // Scroll reveal animations with Intersection Observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                } else {
+                    entry.target.classList.remove('revealed');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Mobile Menu Toggle Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuIconPath = document.getElementById('menu-icon-path');
+        const body = document.body;
+
+        function toggleMenu() {
+            const isOpen = !mobileMenu.classList.contains('translate-x-full');
+
+            if (isOpen) {
+                // Close Menu
+                mobileMenu.classList.add('translate-x-full');
+                menuOverlay.classList.remove('opacity-100');
+                menuOverlay.classList.add('opacity-0');
+                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+                body.style.overflow = '';
+            } else {
+                // Open Menu
+                mobileMenu.classList.remove('translate-x-full');
+                menuOverlay.classList.remove('opacity-0');
+                menuOverlay.classList.add('opacity-100');
+                menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                body.style.overflow = 'hidden';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking mobile nav links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
+
+</body>
+
+</html>
